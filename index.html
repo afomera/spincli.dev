@@ -23,7 +23,7 @@
     <section class="hero">
         <div class="container">
             <h1>Spin</h1>
-            <p>A powerful development environment manager that helps you run and manage multiple processes in your development workflow.</p>
+            <p>A powerful development environment manager that helps you run and manage multiple processes and services in your development workflow.</p>
             <a href="#installation" class="button">Get Started</a>
         </div>
     </section>
@@ -92,15 +92,15 @@
             <div class="commands-grid">
                 <div class="command-card">
                     <h3>spin up [app-name]</h3>
-                    <p>Start the development environment for an application.</p>
-                    <pre>spin up           # Start the app in the current directory
+                    <p>Start the development environment and required services for an application. Automatically manages services defined in your configuration.</p>
+                    <pre>spin up           # Start the app and required services
 spin up myapp     # Start the app in the myapp directory</pre>
                 </div>
 
                 <div class="command-card">
                     <h3>spin down</h3>
-                    <p>Stop all running processes and clean up the development environment.</p>
-                    <pre>spin down         # Stop all processes</pre>
+                    <p>Stop all running processes, clean up the development environment, and stop any services that were started.</p>
+                    <pre>spin down         # Stop all processes and services</pre>
                 </div>
 
                 <div class="command-card">
@@ -140,10 +140,14 @@ spin config set-org myorg     # Set default organization</pre>
     </section>
 
     <section id="configuration">
-        <div class="container">
+        <div class="container config-section">
             <h2>Configuration</h2>
-            <h3>spin.config.json</h3>
-            <p>The main configuration file for your application. Here's an example of a Rails application configuration:</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
+            <p>Configuration is read from the <code>spin.config.json</code> file in your project directory.</p>
+            <h3>Configuration File</h3>
+            <p>The main configuration file for your application. Here's an example of a Rails application configuration with service dependencies:</p>
             <pre>{
   "name": "test_rails",
   "version": "1.0.0",
@@ -153,7 +157,7 @@ spin config set-org myorg     # Set default organization</pre>
     "name": "test_rails"
   },
   "dependencies": {
-    "services": ["sqlite3"],
+    "services": ["postgresql", "redis"],  // Supported services: postgresql, redis, sqlite3
     "tools": ["ruby", "bundler"]
   },
   "scripts": {
@@ -169,17 +173,88 @@ spin config set-org myorg     # Set default organization</pre>
       "version": "3.4.1"
     },
     "database": {
-      "type": "sqlite3",
+      "type": "postgresql",
       "settings": {
-        "database": "storage/development.sqlite3"
+        "database": "myapp_development"
       }
     },
     "rails": {
       "version": "8.0.1"
     },
-    "services": {}
+    "services": {
+      "redis": true,    // Enable Redis for Action Cable/Caching
+      "sidekiq": true   // Enable Redis for Sidekiq
+    }
   }
 }</pre>
+
+            <h3>Service Management</h3>
+            <p>Spin provides automatic service management for your development environment. Services are defined in your configuration file under the <code>dependencies.services</code> section.</p>
+
+            <h4>Supported Services</h4>
+            <div class="command-card">
+                <h5>PostgreSQL</h5>
+                <p>Managed PostgreSQL database service.</p>
+                <pre>
+{
+  "dependencies": {
+    "services": ["postgresql"]
+  },
+  "rails": {
+    "database": {
+      "type": "postgresql"
+    }
+  }
+}</pre>
+            </div>
+
+            <div class="command-card">
+                <h5>Redis</h5>
+                <p>In-memory data store for Action Cable, caching, and Sidekiq.</p>
+                <pre>
+{
+  "dependencies": {
+    "services": ["redis"]
+  },
+  "rails": {
+    "services": {
+      "redis": true,
+      "sidekiq": true
+    }
+  }
+}</pre>
+            </div>
+
+            <div class="command-card">
+                <h5>SQLite3</h5>
+                <p>Lightweight file-based database option.</p>
+                <pre>
+{
+  "dependencies": {
+    "services": ["sqlite3"]
+  },
+  "rails": {
+    "database": {
+      "type": "sqlite3"
+    }
+  }
+}</pre>
+            </div>
+
+            <h4>Service Lifecycle</h4>
+            <div class="command-card">
+                <p>When you run <code>spin up</code>, Spin will:</p>
+                <ul>
+                    <li>Read service requirements from your configuration</li>
+                    <li>Check if each required service is already running</li>
+                    <li>Start any required services that aren't running</li>
+                </ul>
+                <p>When you run <code>spin down</code>, Spin will:</p>
+                <ul>
+                    <li>Stop all services that were started by Spin</li>
+                    <li>Clean up any temporary service data</li>
+                </ul>
+            </div>
 
             <h3>Procfile.dev</h3>
             <p>Define additional processes to run alongside your main application:</p>
@@ -195,8 +270,9 @@ js: yarn build --watch</pre>
             <h2>Development Workflow</h2>
             <ol>
                 <li>Create a <code>spin.config.json</code> in your project</li>
+                <li>Configure required services in the dependencies section</li>
                 <li>Add a <code>Procfile.dev</code> if you need multiple processes</li>
-                <li>Run <code>spin up</code> to start your development environment</li>
+                <li>Run <code>spin up</code> to start your development environment and services</li>
                 <li>Use <code>spin ps</code> to monitor running processes</li>
                 <li>View logs with <code>spin logs [process]</code></li>
                 <li>Debug with <code>spin debug [process]</code> when needed</li>

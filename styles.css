@@ -1,12 +1,16 @@
 :root {
   --primary-color: #ec4899;
+  --primary-hover: #db2777;
   --text-color: #1f2937;
   --text-light: #6b7280;
   --bg-color: #f9fafb;
   --white: #ffffff;
-  --code-bg: #1f2937;
+  --code-bg: #1a1b26;
   --code-color: #e5e7eb;
   --border-color: #e5e7eb;
+  --search-bg: #f3f4f6;
+  --inline-code-bg: #fdf2f8;
+  --inline-code-color: #ec4899;
 }
 
 * {
@@ -44,25 +48,50 @@ nav {
 }
 
 .nav-brand {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-links a {
   color: var(--text-light);
   text-decoration: none;
   transition: color 0.2s;
+  font-weight: 500;
 }
 
 .nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Search */
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-left: 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--search-bg);
+  font-size: 1rem;
   color: var(--text-color);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
 }
 
 /* Hero Section */
@@ -77,9 +106,7 @@ nav {
   font-weight: 800;
   letter-spacing: -0.025em;
   margin-bottom: 1.5rem;
-  background: linear-gradient(to right, var(--primary-color), #f472b6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary-color);
 }
 
 .hero p {
@@ -104,7 +131,7 @@ nav {
 }
 
 .button:hover {
-  background-color: #db2777;
+  background-color: var(--primary-hover);
   transform: translateY(-1px);
   box-shadow: 0 6px 8px rgba(236, 72, 153, 0.2);
 }
@@ -126,9 +153,23 @@ h2 {
 }
 
 h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--text-color);
+}
+
+h4 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
   color: var(--text-color);
 }
 
@@ -180,6 +221,7 @@ details {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   padding: 0.5rem;
+  background: var(--white);
 }
 
 summary {
@@ -191,7 +233,7 @@ summary {
 }
 
 summary:hover {
-  color: #db2777;
+  color: var(--primary-hover);
 }
 
 .next-steps {
@@ -230,6 +272,46 @@ summary:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Service Documentation */
+.config-section .command-card {
+  margin: 1.5rem 0;
+}
+
+.config-section .command-card h5 {
+  color: var(--primary-color);
+}
+
+.config-section .command-card p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.config-section .command-card ul {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.config-section .command-card ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.config-section .command-card ul li:before {
+  content: "→";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+.config-section .command-card pre {
+  margin: 1rem 0 0 0;
+  background: var(--code-bg);
+  font-size: 0.85rem;
+}
+
 /* Code Blocks */
 pre {
   background: var(--code-bg);
@@ -238,17 +320,56 @@ pre {
   border-radius: 0.5rem;
   overflow-x: auto;
   margin: 1rem 0;
-  font-family: 'Monaco', 'Consolas', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.9rem;
   line-height: 1.5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 code {
-  background: var(--bg-color);
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  font-family: 'Monaco', 'Consolas', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Configuration Section */
+.config-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.config-section pre {
+  margin: 2rem 0;
+}
+
+.config-section h3 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+}
+
+.config-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.config-section ul li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.config-section ul li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
 /* Lists */
@@ -298,5 +419,9 @@ footer {
 
   h2 {
     font-size: 2rem;
+  }
+
+  .search-container {
+    margin: 1rem;
   }
 }
