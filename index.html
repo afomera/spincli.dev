@@ -5,281 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin - Development Environment Manager</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
-    <nav>
+    <nav class="top-nav">
         <div class="container nav-container">
-            <a href="#" class="nav-brand">Spin</a>
+            <a href="index.html" class="nav-brand">Spin</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
             <div class="nav-links">
-                <a href="#installation">Installation</a>
-                <a href="#commands">Commands</a>
-                <a href="#configuration">Configuration</a>
-                <a href="#workflow">Workflow</a>
+                <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Spin</h1>
-            <p>A powerful development environment manager that helps you run and manage multiple processes and services in your development workflow.</p>
-            <a href="#installation" class="button">Get Started</a>
-        </div>
-    </section>
-
-    <section id="installation">
-        <div class="container">
-            <h2>Installation</h2>
-            
-            <div class="installation-grid">
-                <div class="command-card">
-                    <h3>Prerequisites</h3>
-                    <ul class="requirements-list">
-                        <li>
-                            <strong>tmux</strong> - Required for process management
-                            <div class="note">Used to manage and isolate development processes</div>
-                        </li>
+    <div class="docs-container">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="installation.html">Installation</a></li>
+                        <li><a href="installation.html#quickstart">Quick Start</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Commands</h3>
+                    <ul>
+                        <li><a href="commands.html#up">spin up</a></li>
+                        <li><a href="commands.html#down">spin down</a></li>
+                        <li><a href="commands.html#ps">spin ps</a></li>
+                        <li><a href="commands.html#logs">spin logs</a></li>
+                        <li><a href="commands.html#debug">spin debug</a></li>
+                        <li><a href="commands.html#setup">spin setup</a></li>
+                        <li><a href="commands.html#config">spin config</a></li>
+                        <li><a href="commands.html#fetch">spin fetch</a></li>
+                        <li><a href="commands.html#services">spin services</a></li>
                     </ul>
                 </div>
 
-                <div class="command-card">
-                    <h3>Quick Install</h3>
-                    <p>Install Spin:</p>
-                    <a href="https://github.com/afomera/spin">Download from GitHub Releases</a>
-                    <p class="verification">Verify installation:</p>
-                    <pre>spin</pre>
+                <div class="nav-section">
+                    <h3>Configuration</h3>
+                    <ul>
+                        <li><a href="configuration.html#config-file">Config File</a></li>
+                        <li><a href="configuration.html#services">Services</a></li>
+                        <li><a href="configuration.html#procfile">Procfile.dev</a></li>
+                    </ul>
                 </div>
 
-                <div class="command-card">
-                    <h3>Platform-Specific Setup</h3>
-                    
-                    <details>
-                        <summary>macOS</summary>
-                        <div class="platform-instructions">
-                            <p>Install prerequisites using Homebrew:</p>
-                            <pre>brew install tmux</pre>
+                <div class="nav-section">
+                    <h3>Advanced</h3>
+                    <ul>
+                        <li><a href="workflow.html">Development Workflow</a></li>
+                        <li><a href="workflow.html#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section class="hero">
+                <div class="container">
+                    <h1>Spin</h1>
+                    <p>A powerful development environment manager that helps you run and manage multiple processes and services in your development workflow.</p>
+                    <a href="installation.html" class="button">Get Started</a>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <h2>Why Spin?</h2>
+                    <div class="commands-grid">
+                        <div class="command-card">
+                            <h3>Simple Process Management</h3>
+                            <p>Easily manage multiple processes and services in your development environment with a single command.</p>
                         </div>
-                    </details>
 
-                    <details>
-                        <summary>Linux</summary>
-                        <div class="platform-instructions">
-                            <p>Install prerequisites using apt (Ubuntu/Debian):</p>
-                            <pre>sudo apt update && sudo apt install tmux</pre>
-                            <p>Or using yum (RHEL/CentOS):</p>
-                            <pre>sudo yum install tmux</pre>
+                        <div class="command-card">
+                            <h3>Service Integration</h3>
+                            <p>Automatic management of development dependencies like PostgreSQL, Redis, and more.</p>
                         </div>
-                    </details>
+
+                        <div class="command-card">
+                            <h3>Developer Friendly</h3>
+                            <p>Intuitive commands and configuration that make local development a breeze.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="command-card">
-                    <h3>Next Steps</h3>
-                    <ol class="next-steps">
-                        <li>Create a new project directory</li>
-                        <li>Initialize with <code>spin setup</code></li>
-                        <li>Configure your development environment</li>
-                        <li>Start developing with <code>spin up</code></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="commands">
-        <div class="container">
-            <h2>Commands</h2>
-            <div class="commands-grid">
-                <div class="command-card">
-                    <h3>spin up [app-name]</h3>
-                    <p>Start the development environment and required services for an application. Automatically manages services defined in your configuration.</p>
-                    <pre>spin up           # Start the app and required services
-spin up myapp     # Start the app in the myapp directory</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin down</h3>
-                    <p>Stop all running processes, clean up the development environment, and stop any services that were started.</p>
-                    <pre>spin down         # Stop all processes and services</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin ps</h3>
-                    <p>List all running processes and their status.</p>
-                    <pre>spin ps           # Show process list</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin logs [process-name]</h3>
-                    <p>View the output logs for a specific process.</p>
-                    <pre>spin logs web     # View web process logs</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin debug [process-name]</h3>
-                    <p>Attach to a process in debug mode (useful for interactive debugging sessions).</p>
-                    <pre>spin debug web    # Debug web process</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin setup [app-name]</h3>
-                    <p>Initialize a new application with Spin configuration.</p>
-                    <pre>spin setup myapp              # Setup new app in myapp directory
-spin setup myapp --repo=org/name  # Setup with specific repository
-spin setup . --force         # Setup in current directory</pre>
-                </div>
-
-                <div class="command-card">
-                    <h3>spin config</h3>
-                    <p>Manage Spin configuration settings.</p>
-                    <pre>spin config show              # Show current configuration
-spin config set-org myorg     # Set default organization</pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="configuration">
-        <div class="container config-section">
-            <h2>Configuration</h2>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search documentation..." />
-            </div>
-            <p>Configuration is read from the <code>spin.config.json</code> file in your project directory.</p>
-            <h3>Configuration File</h3>
-            <p>The main configuration file for your application. Here's an example of a Rails application configuration with service dependencies:</p>
-            <pre>{
-  "name": "test_rails",
-  "version": "1.0.0",
-  "type": "rails",
-  "repository": {
-    "organization": "afomera",
-    "name": "test_rails"
-  },
-  "dependencies": {
-    "services": ["postgresql", "redis"],  // Supported services: postgresql, redis, sqlite3
-    "tools": ["ruby", "bundler"]
-  },
-  "scripts": {
-    "setup": "bundle install && rails db:setup",
-    "start": "rails server",
-    "test": "rails test"
-  },
-  "env": {
-    "development": {}
-  },
-  "rails": {
-    "ruby": {
-      "version": "3.4.1"
-    },
-    "database": {
-      "type": "postgresql",
-      "settings": {
-        "database": "myapp_development"
-      }
-    },
-    "rails": {
-      "version": "8.0.1"
-    },
-    "services": {
-      "redis": true,    // Enable Redis for Action Cable/Caching
-      "sidekiq": true   // Enable Redis for Sidekiq
-    }
-  }
-}</pre>
-
-            <h3>Service Management</h3>
-            <p>Spin provides automatic service management for your development environment. Services are defined in your configuration file under the <code>dependencies.services</code> section.</p>
-
-            <h4>Supported Services</h4>
-            <div class="command-card">
-                <h5>PostgreSQL</h5>
-                <p>Managed PostgreSQL database service.</p>
-                <pre>
-{
-  "dependencies": {
-    "services": ["postgresql"]
-  },
-  "rails": {
-    "database": {
-      "type": "postgresql"
-    }
-  }
-}</pre>
-            </div>
-
-            <div class="command-card">
-                <h5>Redis</h5>
-                <p>In-memory data store for Action Cable, caching, and Sidekiq.</p>
-                <pre>
-{
-  "dependencies": {
-    "services": ["redis"]
-  },
-  "rails": {
-    "services": {
-      "redis": true,
-      "sidekiq": true
-    }
-  }
-}</pre>
-            </div>
-
-            <div class="command-card">
-                <h5>SQLite3</h5>
-                <p>Lightweight file-based database option.</p>
-                <pre>
-{
-  "dependencies": {
-    "services": ["sqlite3"]
-  },
-  "rails": {
-    "database": {
-      "type": "sqlite3"
-    }
-  }
-}</pre>
-            </div>
-
-            <h4>Service Lifecycle</h4>
-            <div class="command-card">
-                <p>When you run <code>spin up</code>, Spin will:</p>
-                <ul>
-                    <li>Read service requirements from your configuration</li>
-                    <li>Check if each required service is already running</li>
-                    <li>Start any required services that aren't running</li>
-                </ul>
-                <p>When you run <code>spin down</code>, Spin will:</p>
-                <ul>
-                    <li>Stop all services that were started by Spin</li>
-                    <li>Clean up any temporary service data</li>
-                </ul>
-            </div>
-
-            <h3>Procfile.dev</h3>
-            <p>Define additional processes to run alongside your main application:</p>
-            <pre>web: bundle exec rails server -p 3000
-worker: bundle exec sidekiq
-css: yarn build:css --watch
-js: yarn build --watch</pre>
-        </div>
-    </section>
-
-    <section id="workflow">
-        <div class="container">
-            <h2>Development Workflow</h2>
-            <ol>
-                <li>Create a <code>spin.config.json</code> in your project</li>
-                <li>Configure required services in the dependencies section</li>
-                <li>Add a <code>Procfile.dev</code> if you need multiple processes</li>
-                <li>Run <code>spin up</code> to start your development environment and services</li>
-                <li>Use <code>spin ps</code> to monitor running processes</li>
-                <li>View logs with <code>spin logs [process]</code></li>
-                <li>Debug with <code>spin debug [process]</code> when needed</li>
-                <li>Stop everything with <code>spin down</code></li>
-            </ol>
-        </div>
-    </section>
+            </section>
+        </main>
+    </div>
 
     <footer>
         <div class="container">

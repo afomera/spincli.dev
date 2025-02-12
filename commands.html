@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands - Spin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">Spin</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
+            <div class="nav-links">
+                <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="installation.html">Installation</a></li>
+                        <li><a href="installation.html#quickstart">Quick Start</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Commands</h3>
+                    <ul>
+                        <li><a href="commands.html#up">spin up</a></li>
+                        <li><a href="commands.html#down">spin down</a></li>
+                        <li><a href="commands.html#ps">spin ps</a></li>
+                        <li><a href="commands.html#logs">spin logs</a></li>
+                        <li><a href="commands.html#debug">spin debug</a></li>
+                        <li><a href="commands.html#setup">spin setup</a></li>
+                        <li><a href="commands.html#config">spin config</a></li>
+                        <li><a href="commands.html#fetch">spin fetch</a></li>
+                        <li><a href="commands.html#services">spin services</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Configuration</h3>
+                    <ul>
+                        <li><a href="configuration.html#config-file">Config File</a></li>
+                        <li><a href="configuration.html#services">Services</a></li>
+                        <li><a href="configuration.html#procfile">Procfile.dev</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Advanced</h3>
+                    <ul>
+                        <li><a href="workflow.html">Development Workflow</a></li>
+                        <li><a href="workflow.html#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="commands">
+                <div class="container">
+                    <h2>Commands</h2>
+                    <div class="commands-grid">
+                        <div id="up" class="command-card">
+                            <h3>spin up [app-name]</h3>
+                            <p>Start the development environment and required services for an application. Automatically manages services defined in your configuration.</p>
+                            <pre>spin up           # Start the app and required services
+spin up myapp     # Start the app in the myapp directory</pre>
+                        </div>
+
+                        <div id="down" class="command-card">
+                            <h3>spin down</h3>
+                            <p>Stop all running processes, clean up the development environment, and stop any services that were started.</p>
+                            <pre>spin down         # Stop all processes and services</pre>
+                        </div>
+
+                        <div id="ps" class="command-card">
+                            <h3>spin ps</h3>
+                            <p>List all running processes and their status.</p>
+                            <pre>spin ps           # Show process list</pre>
+                        </div>
+
+                        <div id="logs" class="command-card">
+                            <h3>spin logs [process-name]</h3>
+                            <p>View the output logs for a specific process.</p>
+                            <pre>spin logs web     # View web process logs</pre>
+                        </div>
+
+                        <div id="debug" class="command-card">
+                            <h3>spin debug [process-name]</h3>
+                            <p>Attach to a process in debug mode (useful for interactive debugging sessions).</p>
+                            <pre>spin debug web    # Debug web process</pre>
+                        </div>
+
+                        <div id="setup" class="command-card">
+                            <h3>spin setup [app-name]</h3>
+                            <p>Initialize a new application with Spin configuration.</p>
+                            <pre>spin setup myapp              # Setup new app in myapp directory
+spin setup myapp --repo=org/name  # Setup with specific repository
+spin setup . --force         # Setup in current directory</pre>
+                        </div>
+
+                        <div id="config" class="command-card">
+                            <h3>spin config</h3>
+                            <p>Manage Spin configuration settings.</p>
+                            <pre>spin config show              # Show current configuration
+spin config set-org myorg     # Set default organization</pre>
+                        </div>
+
+                        <div id="fetch" class="command-card">
+                            <h3>spin fetch [app-name]</h3>
+                            <p>Fetch the latest changes from a repository.</p>
+                            <pre>spin fetch           # Fetch latest changes for current app
+spin fetch myapp     # Fetch latest changes for myapp</pre>
+                        </div>
+
+                        <div id="services" class="command-card">
+                            <h3>spin services</h3>
+                            <p>List and manage required services for your application.</p>
+                            <pre>spin services list    # List all available services
+spin services start   # Start required services
+spin services stop    # Stop all services</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Spin - A development environment manager</p>
+        </div>
+    </footer>
+</body>
+</html>

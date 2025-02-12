@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration - Spin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">Spin</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
+            <div class="nav-links">
+                <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="installation.html">Installation</a></li>
+                        <li><a href="installation.html#quickstart">Quick Start</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Commands</h3>
+                    <ul>
+                        <li><a href="commands.html#up">spin up</a></li>
+                        <li><a href="commands.html#down">spin down</a></li>
+                        <li><a href="commands.html#ps">spin ps</a></li>
+                        <li><a href="commands.html#logs">spin logs</a></li>
+                        <li><a href="commands.html#debug">spin debug</a></li>
+                        <li><a href="commands.html#setup">spin setup</a></li>
+                        <li><a href="commands.html#config">spin config</a></li>
+                        <li><a href="commands.html#fetch">spin fetch</a></li>
+                        <li><a href="commands.html#services">spin services</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Configuration</h3>
+                    <ul>
+                        <li><a href="configuration.html#config-file">Config File</a></li>
+                        <li><a href="configuration.html#services">Services</a></li>
+                        <li><a href="configuration.html#procfile">Procfile.dev</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Advanced</h3>
+                    <ul>
+                        <li><a href="workflow.html">Development Workflow</a></li>
+                        <li><a href="workflow.html#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="configuration">
+                <div class="container config-section">
+                    <h2>Configuration</h2>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search documentation..." />
+                    </div>
+
+                    <div id="config-file">
+                        <h3>Configuration File</h3>
+                        <p>Configuration is read from the <code>spin.config.json</code> file in your project directory.</p>
+                        <p>The main configuration file for your application. Here's an example of a Rails application configuration with service dependencies:</p>
+                        <pre>{
+  "name": "test_rails",
+  "version": "1.0.0",
+  "type": "rails",
+  "repository": {
+    "organization": "afomera",
+    "name": "test_rails"
+  },
+  "dependencies": {
+    "services": ["postgresql", "redis"],  // Supported services: postgresql, redis, sqlite3
+    "tools": ["ruby", "bundler"]
+  },
+  "scripts": {
+    "setup": "bundle install && rails db:setup",
+    "start": "rails server",
+    "test": "rails test"
+  },
+  "env": {
+    "development": {}
+  },
+  "rails": {
+    "ruby": {
+      "version": "3.4.1"
+    },
+    "database": {
+      "type": "postgresql",
+      "settings": {
+        "database": "myapp_development"
+      }
+    },
+    "rails": {
+      "version": "8.0.1"
+    },
+    "services": {
+      "redis": true,    // Enable Redis for Action Cable/Caching
+      "sidekiq": true   // Enable Redis for Sidekiq
+    }
+  }
+}</pre>
+                    </div>
+
+                    <div id="services">
+                        <h3>Service Management</h3>
+                        <p>Spin provides automatic service management for your development environment. Services are defined in your configuration file under the <code>dependencies.services</code> section.</p>
+
+                        <h4>Supported Services</h4>
+                        <div class="command-card">
+                            <h5>PostgreSQL</h5>
+                            <p>Managed PostgreSQL database service.</p>
+                            <pre>{
+  "dependencies": {
+    "services": ["postgresql"]
+  },
+  "rails": {
+    "database": {
+      "type": "postgresql"
+    }
+  }
+}</pre>
+                        </div>
+
+                        <div class="command-card">
+                            <h5>Redis</h5>
+                            <p>In-memory data store for Action Cable, caching, and Sidekiq.</p>
+                            <pre>{
+  "dependencies": {
+    "services": ["redis"]
+  },
+  "rails": {
+    "services": {
+      "redis": true,
+      "sidekiq": true
+    }
+  }
+}</pre>
+                        </div>
+
+                        <div class="command-card">
+                            <h5>SQLite3</h5>
+                            <p>Lightweight file-based database option.</p>
+                            <pre>{
+  "dependencies": {
+    "services": ["sqlite3"]
+  },
+  "rails": {
+    "database": {
+      "type": "sqlite3"
+    }
+  }
+}</pre>
+                        </div>
+
+                        <h4>Service Lifecycle</h4>
+                        <div class="command-card">
+                            <p>When you run <code>spin up</code>, Spin will:</p>
+                            <ul>
+                                <li>Read service requirements from your configuration</li>
+                                <li>Check if each required service is already running</li>
+                                <li>Start any required services that aren't running</li>
+                            </ul>
+                            <p>When you run <code>spin down</code>, Spin will:</p>
+                            <ul>
+                                <li>Stop all services that were started by Spin</li>
+                                <li>Clean up any temporary service data</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="procfile">
+                        <h3>Procfile.dev</h3>
+                        <p>Define additional processes to run alongside your main application:</p>
+                        <pre>web: bundle exec rails server -p 3000
+worker: bundle exec sidekiq
+css: yarn build:css --watch
+js: yarn build --watch</pre>
+                        
+                        <div class="command-card">
+                            <h4>Process Types</h4>
+                            <ul>
+                                <li>Each line defines a process type and its command</li>
+                                <li>Process types can be referenced in logs and debugging</li>
+                                <li>All processes are managed together by Spin</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Spin - A development environment manager</p>
+        </div>
+    </footer>
+</body>
+</html>
