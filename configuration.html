@@ -15,6 +15,14 @@
                 <input type="text" class="search-input" placeholder="Search documentation..." />
             </div>
             <div class="nav-links">
+                <select class="version-select" aria-label="Version">
+                    <option value="latest">v1.0.0 (latest)</option>
+                    <option value="0.9.0">v0.9.0</option>
+                    <option value="0.8.0">v0.8.0</option>
+                </select>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    Toggle Dark Mode
+                </button>
                 <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
             </div>
         </div>
@@ -70,7 +78,7 @@
                 <div class="container config-section">
                     <h2>Configuration</h2>
                     <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Search documentation..." />
+                        <input type="text" class="search-input" placeholder="Search configuration..." />
                     </div>
 
                     <div id="config-file">
@@ -204,6 +212,13 @@ js: yarn build --watch</pre>
                     </div>
                 </div>
             </section>
+
+            <div class="prev-next-nav">
+                <a href="commands.html" class="prev-link">← Previous: Commands</a>
+                <a href="workflow.html" class="next-link">Next: Development Workflow →</a>
+            </div>
+
+            <div class="last-updated"></div>
         </main>
     </div>
 
@@ -212,5 +227,7 @@ js: yarn build --watch</pre>
             <p>Spin - A development environment manager</p>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -11,6 +11,19 @@
   --search-bg: #f3f4f6;
   --inline-code-bg: #fdf2f8;
   --inline-code-color: #ec4899;
+  --card-bg: var(--white);
+}
+
+/* Dark mode colors */
+.dark-mode {
+  --text-color: #e5e7eb;
+  --text-light: #9ca3af;
+  --bg-color: #111827;
+  --white: #1f2937;
+  --border-color: #374151;
+  --search-bg: #1f2937;
+  --inline-code-bg: #312e81;
+  --card-bg: #1f2937;
 }
 
 * {
@@ -24,6 +37,7 @@ body {
   line-height: 1.5;
   color: var(--text-color);
   font-weight: 400;
+  background-color: var(--bg-color);
 }
 
 h1, h2, h3, h4, h5, .nav-brand {
@@ -45,7 +59,7 @@ h1, h2, h3, h4, h5, .nav-brand {
 
 /* Navigation */
 .top-nav {
-  background: var(--white);
+  background: var(--card-bg);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -61,7 +75,7 @@ h1, h2, h3, h4, h5, .nav-brand {
 .sidebar {
   width: 280px;
   flex-shrink: 0;
-  background: var(--white);
+  background: var(--card-bg);
   border-right: 1px solid var(--border-color);
   height: calc(100vh - 4rem);
   position: sticky;
@@ -135,6 +149,7 @@ h1, h2, h3, h4, h5, .nav-brand {
 .nav-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -146,6 +161,23 @@ h1, h2, h3, h4, h5, .nav-brand {
 }
 
 .nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.dark-mode-toggle:hover {
   color: var(--primary-color);
 }
 
@@ -175,7 +207,7 @@ h1, h2, h3, h4, h5, .nav-brand {
 
 /* Hero Section */
 .hero {
-  background: var(--white);
+  background: var(--card-bg);
   padding: 6rem 0 8rem;
   text-align: center;
 }
@@ -259,93 +291,9 @@ h5 {
   letter-spacing: -0.01em;
 }
 
-/* Installation Section */
-.installation-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.requirements-list {
-  list-style: none;
-}
-
-.requirements-list li {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: var(--white);
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-color);
-}
-
-.requirements-list strong {
-  display: block;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
-}
-
-.note {
-  color: var(--text-light);
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  line-height: 1.4;
-}
-
-.verification {
-  margin-top: 1.5rem;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.platform-instructions {
-  padding: 1rem 0;
-}
-
-details {
-  margin: 0.75rem 0;
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  background: var(--white);
-}
-
-summary {
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--primary-color);
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-summary:hover {
-  color: var(--primary-hover);
-}
-
-.next-steps {
-  list-style-position: inside;
-  padding: 0;
-}
-
-.next-steps li {
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.next-steps li:last-child {
-  border-bottom: none;
-}
-
 /* Command Cards */
-.commands-grid {
-  display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
 .command-card {
-  background: var(--white);
+  background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -356,46 +304,6 @@ summary:hover {
 .command-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Service Documentation */
-.config-section .command-card {
-  margin: 1.5rem 0;
-}
-
-.config-section .command-card h5 {
-  color: var(--primary-color);
-}
-
-.config-section .command-card p {
-  margin-bottom: 1rem;
-  color: var(--text-light);
-}
-
-.config-section .command-card ul {
-  list-style-type: none;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
-}
-
-.config-section .command-card ul li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
-}
-
-.config-section .command-card ul li:before {
-  content: "→";
-  color: var(--primary-color);
-  position: absolute;
-  left: 0;
-}
-
-.config-section .command-card pre {
-  margin: 1rem 0 0 0;
-  background: var(--code-bg);
-  font-size: 0.85rem;
 }
 
 /* Code Blocks */
@@ -410,62 +318,72 @@ pre {
   font-size: 0.9rem;
   line-height: 1.5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-code {
-  background: var(--inline-code-bg);
-  color: var(--inline-code-color);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* Configuration Section */
-.config-section {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.config-section pre {
-  margin: 2rem 0;
-}
-
-.config-section h3 {
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-top: 3rem;
-}
-
-.config-section ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.config-section ul li {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
   position: relative;
 }
 
-.config-section ul li:before {
-  content: "•";
-  color: var(--primary-color);
-  font-weight: bold;
+/* Copy Button */
+.copy-button {
   position: absolute;
-  left: 0;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-/* Lists */
-ol {
-  list-style-position: inside;
-  margin: 1rem 0;
+pre:hover .copy-button {
+  opacity: 1;
 }
 
-ol li {
-  margin-bottom: 1rem;
+.copy-button:hover {
+  background: var(--primary-hover);
+}
+
+/* Previous/Next Navigation */
+.prev-next-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.prev-link, .next-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.prev-link:hover, .next-link:hover {
+  color: var(--primary-hover);
+}
+
+/* Last Updated */
+.last-updated {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin-top: 2rem;
+  text-align: right;
+}
+
+/* Version Selector */
+.version-select {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.875rem;
+  margin-left: 1rem;
 }
 
 /* Footer */
@@ -475,19 +393,6 @@ footer {
   text-align: center;
   color: var(--text-light);
   border-top: 1px solid var(--border-color);
-}
-
-/* Top Navigation */
-.nav-container {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav-container .search-container {
-  flex: 1;
-  max-width: 400px;
-  margin: 0;
 }
 
 /* Responsive Design */
@@ -562,5 +467,11 @@ footer {
 
   .side-nav {
     padding: 0 1rem;
+  }
+
+  .prev-next-nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
   }
 }
