@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - SpinCLI</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container nav-container">
+            <a href="{{ '/' | relative_url }}" class="nav-brand">Spin</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
+            <div class="nav-links">
+                <select class="version-select" aria-label="Version">
+                    <option value="latest">v1.0.0 (latest)</option>
+                    <option value="0.9.0">v0.9.0</option>
+                    <option value="0.8.0">v0.8.0</option>
+                </select>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    Toggle Dark Mode
+                </button>
+                <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    {{ content }}
+
+    <footer>
+        <div class="container">
+            <p>Spin - A development environment manager</p>
+        </div>
+    </footer>
+
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,10 +1,78 @@
----
-layout: default
-title: Configuration
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration - SpinCLI</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">Spin</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search documentation..." />
+            </div>
+            <div class="nav-links">
+                <select class="version-select" aria-label="Version">
+                    <option value="latest">v1.0.0 (latest)</option>
+                    <option value="0.9.0">v0.9.0</option>
+                    <option value="0.8.0">v0.8.0</option>
+                </select>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    Toggle Dark Mode
+                </button>
+                <a href="https://github.com/afomera/spin" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
 
-<div class="docs-container">
-    {% include sidebar.html %}
+    <div class="docs-container">
+    <aside class="sidebar">
+    <nav class="side-nav">
+        <div class="nav-section">
+            <h3>Getting Started</h3>
+            <ul>
+                <li><a href="/installation">Installation</a></li>
+                <li><a href="/installation#quickstart">Quick Start</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <h3>Commands</h3>
+            <ul>
+                <li><a href="/commands#up">spin up</a></li>
+                <li><a href="/commands#down">spin down</a></li>
+                <li><a href="/commands#ps">spin ps</a></li>
+                <li><a href="/commands#logs">spin logs</a></li>
+                <li><a href="/commands#debug">spin debug</a></li>
+                <li><a href="/commands#setup">spin setup</a></li>
+                <li><a href="/commands#config">spin config</a></li>
+                <li><a href="/commands#fetch">spin fetch</a></li>
+                <li><a href="/commands#services">spin services</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <h3>Configuration</h3>
+            <ul>
+                <li><a href="/configuration#config-file">Config File</a></li>
+                <li><a href="/configuration#services">Services</a></li>
+                <li><a href="/configuration#procfile">Procfile.dev</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <h3>Advanced</h3>
+            <ul>
+                <li><a href="/workflow">Development Workflow</a></li>
+                <li><a href="/workflow#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </div>
+    </nav>
+</aside>
+
 
     <main class="content">
         <section id="configuration">
@@ -147,10 +215,21 @@ js: yarn build --watch</pre>
         </section>
 
         <div class="prev-next-nav">
-            <a href="{{ '/commands' | relative_url }}" class="prev-link">← Previous: Commands</a>
-            <a href="{{ '/workflow' | relative_url }}" class="next-link">Next: Development Workflow →</a>
+            <a href="/commands" class="prev-link">← Previous: Commands</a>
+            <a href="/workflow" class="next-link">Next: Development Workflow →</a>
         </div>
 
         <div class="last-updated"></div>
     </main>
 </div>
+
+
+    <footer>
+        <div class="container">
+            <p>Spin - A development environment manager</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

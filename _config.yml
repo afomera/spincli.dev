@@ -1,0 +1,14 @@
+title: SpinCLI
+description: Documentation for SpinCLI - A powerful CLI tool
+url: ""
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
