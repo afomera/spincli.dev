@@ -17,7 +17,7 @@ title: Configuration
                 <div id="config-file">
                     <h3>Configuration File</h3>
                     <p>Configuration is read from the <code>spin.config.json</code> file in your project directory.</p>
-                    <p>The main configuration file for your application. Here's an example of a Rails application configuration with service dependencies:</p>
+                    <p>The main configuration file for your application. Here's an example of a Rails application configuration:</p>
                     <pre>{
   "name": "test_rails",
   "version": "1.0.0",
@@ -27,13 +27,47 @@ title: Configuration
     "name": "test_rails"
   },
   "dependencies": {
-    "services": ["postgresql", "redis"],  // Supported services: postgresql, redis, sqlite3
+    "services": ["sqlite3"],
     "tools": ["ruby", "bundler"]
   },
   "scripts": {
-    "setup": "bundle install && rails db:setup",
-    "start": "rails server",
-    "test": "rails test"
+    "setup": {
+      "command": "bundle install",
+      "description": "Install dependencies",
+      "hooks": {
+        "pre": {
+          "command": "asdf install ruby",
+          "description": "Install Ruby version",
+          "env": {
+            "RUBY_VERSION": "3.2.2"
+          }
+        },
+        "post": {
+          "command": "bundle exec rails db:setup",
+          "description": "Set up database"
+        }
+      }
+    },
+    "test": {
+      "command": "bundle exec rspec",
+      "description": "Run tests",
+      "hooks": {
+        "pre": {
+          "command": "bundle exec rails db:test:prepare",
+          "description": "Prepare test database"
+        }
+      }
+    },
+    "server": {
+      "command": "bundle exec rails server",
+      "description": "Start Rails server",
+      "hooks": {
+        "pre": {
+          "command": "bundle exec rails db:prepare",
+          "description": "Prepare database"
+        }
+      }
+    }
   },
   "env": {
     "development": {}
@@ -43,86 +77,114 @@ title: Configuration
       "version": "3.4.1"
     },
     "database": {
-      "type": "postgresql",
+      "type": "sqlite3",
       "settings": {
-        "database": "myapp_development"
+        "database": "storage/development.sqlite3"
       }
     },
     "rails": {
       "version": "8.0.1"
     },
     "services": {
-      "redis": true,    // Enable Redis for Action Cable/Caching
-      "sidekiq": true   // Enable Redis for Sidekiq
+      "postgres": {
+        "type": "docker",
+        "image": "postgres:17",
+        "port": 5432,
+        "environment": {
+          "POSTGRES_USER": "postgres",
+          "POSTGRES_PASSWORD": "postgres"
+        },
+        "volumes": {
+          "data": "/var/lib/postgresql/data"
+        },
+        "healthCheck": {
+          "command": ["pg_isready", "-U", "postgres"],
+          "interval": "10s",
+          "timeout": "5s",
+          "retries": 3,
+          "startPeriod": "10s"
+        }
+      },
+      "redis": {
+        "type": "docker",
+        "image": "redis:7",
+        "port": 6379,
+        "volumes": {
+          "data": "/data"
+        }
+      }
     }
   }
 }</pre>
                 </div>
 
+                <div id="scripts">
+                    <h3>Scripts Configuration</h3>
+                    <p>Scripts are defined in your configuration file under the <code>scripts</code> section. Each script can have:</p>
+                    <ul>
+                        <li>A main command to execute</li>
+                        <li>A description for documentation</li>
+                        <li>Pre and post hooks with their own commands and environment variables</li>
+                    </ul>
+                    <div class="command-card">
+                        <h4>Script Structure</h4>
+                        <pre>{
+  "scripts": {
+    "scriptName": {
+      "command": "main command to run",
+      "description": "What the script does",
+      "hooks": {
+        "pre": {
+          "command": "run before main command",
+          "description": "Setup steps",
+          "env": {
+            "KEY": "value"
+          }
+        },
+        "post": {
+          "command": "run after main command",
+          "description": "Cleanup steps"
+        }
+      }
+    }
+  }
+}</pre>
+                    </div>
+                </div>
+
                 <div id="services">
-                    <h3>Service Management</h3>
-                    <p>Spin provides automatic service management for your development environment. Services are defined in your configuration file under the <code>dependencies.services</code> section.</p>
-
-                    <h4>Supported Services</h4>
+                    <h3>Service Configuration</h3>
+                    <p>Services are defined in your configuration file under the framework-specific section (e.g., <code>rails.services</code>). Each service can have:</p>
+                    <ul>
+                        <li>Docker image and version</li>
+                        <li>Port mappings</li>
+                        <li>Environment variables</li>
+                        <li>Volume mounts</li>
+                        <li>Health checks</li>
+                    </ul>
                     <div class="command-card">
-                        <h5>PostgreSQL</h5>
-                        <p>Managed PostgreSQL database service.</p>
+                        <h4>Service Structure</h4>
                         <pre>{
-  "dependencies": {
-    "services": ["postgresql"]
-  },
-  "rails": {
-    "database": {
-      "type": "postgresql"
+  "services": {
+    "serviceName": {
+      "type": "docker",
+      "image": "image:tag",
+      "port": 1234,
+      "environment": {
+        "ENV_KEY": "value"
+      },
+      "volumes": {
+        "name": "container/path"
+      },
+      "healthCheck": {
+        "command": ["check", "command"],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      }
     }
   }
 }</pre>
-                    </div>
-
-                    <div class="command-card">
-                        <h5>Redis</h5>
-                        <p>In-memory data store for Action Cable, caching, and Sidekiq.</p>
-                        <pre>{
-  "dependencies": {
-    "services": ["redis"]
-  },
-  "rails": {
-    "services": {
-      "redis": true,
-      "sidekiq": true
-    }
-  }
-}</pre>
-                    </div>
-
-                    <div class="command-card">
-                        <h5>SQLite3</h5>
-                        <p>Lightweight file-based database option.</p>
-                        <pre>{
-  "dependencies": {
-    "services": ["sqlite3"]
-  },
-  "rails": {
-    "database": {
-      "type": "sqlite3"
-    }
-  }
-}</pre>
-                    </div>
-
-                    <h4>Service Lifecycle</h4>
-                    <div class="command-card">
-                        <p>When you run <code>spin up</code>, Spin will:</p>
-                        <ul>
-                            <li>Read service requirements from your configuration</li>
-                            <li>Check if each required service is already running</li>
-                            <li>Start any required services that aren't running</li>
-                        </ul>
-                        <p>When you run <code>spin down</code>, Spin will:</p>
-                        <ul>
-                            <li>Stop all services that were started by Spin</li>
-                            <li>Clean up any temporary service data</li>
-                        </ul>
                     </div>
                 </div>
 

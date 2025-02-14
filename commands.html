@@ -42,12 +42,29 @@ spin up myapp     # Start the app in the myapp directory</pre>
                         <pre>spin debug web    # Debug web process</pre>
                     </div>
 
-                    <div id="setup" class="command-card">
-                        <h3>spin setup [app-name]</h3>
+                    <div id="init" class="command-card">
+                        <h3>spin init [app-name]</h3>
                         <p>Initialize a new application with Spin configuration.</p>
-                        <pre>spin setup myapp              # Setup new app in myapp directory
-spin setup myapp --repo=org/name  # Setup with specific repository
-spin setup . --force         # Setup in current directory</pre>
+                        <pre>spin init myapp              # Initialize new app in myapp directory
+spin init myapp --repo=org/name  # Initialize with specific repository
+spin init . --force         # Initialize in current directory</pre>
+                    </div>
+
+                    <div id="scripts" class="command-card">
+                        <h3>spin scripts</h3>
+                        <p>Manage and run scripts defined in your configuration.</p>
+                        <pre>spin scripts list           # Show all available scripts
+spin scripts run setup     # Run the setup script
+spin scripts run test      # Run the test script
+
+# Run with environment variables
+spin scripts run test --env=NODE_ENV=test
+
+# Run in specific directory
+spin scripts run build --workdir=/path/to/dir
+
+# Skip hook errors
+spin scripts run deploy --skip-hook-error</pre>
                     </div>
 
                     <div id="config" class="command-card">
@@ -57,19 +74,19 @@ spin setup . --force         # Setup in current directory</pre>
 spin config set-org myorg     # Set default organization</pre>
                     </div>
 
-                    <div id="fetch" class="command-card">
-                        <h3>spin fetch [app-name]</h3>
-                        <p>Fetch the latest changes from a repository.</p>
-                        <pre>spin fetch           # Fetch latest changes for current app
-spin fetch myapp     # Fetch latest changes for myapp</pre>
-                    </div>
-
                     <div id="services" class="command-card">
                         <h3>spin services</h3>
-                        <p>List and manage required services for your application.</p>
-                        <pre>spin services list    # List all available services
-spin services start   # Start required services
-spin services stop    # Stop all services</pre>
+                        <p>Manage Docker-based services for your application.</p>
+                        <pre>spin services list           # Show all services with status
+spin services start redis    # Start a specific service
+spin services stop redis     # Stop a specific service
+spin services restart redis  # Restart a service
+spin services logs redis     # View service logs
+spin services logs redis -f  # Stream logs continuously
+
+# Service maintenance
+spin services cleanup volumes  # Clean up unused volumes
+spin services update redis    # Update service to latest version</pre>
                     </div>
                 </div>
             </div>
