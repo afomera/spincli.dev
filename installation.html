@@ -1,78 +1,112 @@
 ---
 layout: default
-title: Installation
+title: Installing Spin
 ---
 
-<div class="docs-container">
-    {% include sidebar.html %}
+<div class="space-y-8">
+    <div class="border-b border-gray-200 pb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Installation</h1>
+        <p class="text-xl text-gray-600">
+            Get started with Spin in just a few minutes
+        </p>
+    </div>
 
-    <main class="content">
-        <section id="installation">
-            <div class="container">
-                <h2>Installation</h2>
-                
-                <div class="installation-grid">
-                    <div class="command-card">
-                        <h3>Prerequisites</h3>
-                        <ul class="requirements-list">
-                            <li>
-                                <strong>tmux</strong> - Required for process management
-                                <div class="note">Used to manage and isolate development processes</div>
-                            </li>
-                        </ul>
-                    </div>
+    <!-- Prerequisites -->
+    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Prerequisites</h2>
+        <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>tmux (Required for process management)</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Git (for version control)</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Docker (for service management)</span>
+            </li>
+        </ul>
+    </div>
 
-                    <div class="command-card">
-                        <h3>Quick Install</h3>
-                        <p>Install Spin:</p>
-                        <a href="https://github.com/afomera/spin">Download from GitHub Releases</a>
-                        <p class="verification">Verify installation:</p>
-                        <pre>spin</pre>
-                    </div>
-
-                    <div class="command-card">
-                        <h3>Platform-Specific Setup</h3>
-                        
-                        <details>
-                            <summary>macOS</summary>
-                            <div class="platform-instructions">
-                                <p>Install prerequisites using Homebrew:</p>
-                                <pre>brew install tmux</pre>
-                            </div>
-                        </details>
-
-                        <details>
-                            <summary>Linux</summary>
-                            <div class="platform-instructions">
-                                <p>Install prerequisites using apt (Ubuntu/Debian):</p>
-                                <pre>sudo apt update && sudo apt install tmux</pre>
-                                <p>Or using yum (RHEL/CentOS):</p>
-                                <pre>sudo yum install tmux</pre>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="command-card">
-                        <h3>Next Steps</h3>
-                        <ol class="next-steps">
-                            <li>Create a new project directory</li>
-                            <li>Initialize with <code>spin setup</code></li>
-                            <li>Configure your development environment</li>
-                            <li>Start developing with <code>spin up</code></li>
-                        </ol>
-                    </div>
-                </div>
+    <!-- Quick Install -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Install</h2>
+        <p class="text-gray-600 mb-4">Install Spin:</p>
+        <a href="https://github.com/afomera/spin/releases" class="inline-flex items-center px-4 py-2 border border-primary-300 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            Download from GitHub Releases
+        </a>
+        
+        <div class="mt-6">
+            <p class="text-gray-600">Verify installation:</p>
+            <div class="bg-gray-50 rounded-lg p-4 mt-2">
+                <pre class="text-sm"><code class="text-primary-600">spin</code></pre>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="quickstart">
-            <div class="container">
-                <h2>Quick Start Guide</h2>
-                <div class="command-card">
-                    <h3>Creating a New Project</h3>
-                    <p>Get started with a new project in minutes:</p>
-                    <pre>
-# Create a new directory
+    <!-- Platform-Specific Setup -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Platform-Specific Setup</h2>
+
+        <!-- macOS -->
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">macOS</h3>
+            <p class="text-gray-600 mb-2">Install prerequisites using Homebrew:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+brew install tmux
+
+# Install Docker Desktop for macOS
+brew install --cask docker</code></pre>
+            </div>
+        </div>
+
+        <!-- Linux -->
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Linux</h3>
+            <p class="text-gray-600 mb-2">Install prerequisites using apt (Ubuntu/Debian):</p>
+            <div class="bg-gray-50 rounded-lg p-4 mb-3">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+sudo apt update && sudo apt install tmux
+
+# Install Docker Engine
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER</code></pre>
+            </div>
+            <p class="text-gray-600 mb-2">Or using yum (RHEL/CentOS):</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+sudo yum install tmux
+
+# Install Docker Engine
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo usermod -aG docker $USER</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Start Guide</h2>
+
+        <!-- New Project -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Creating a New Project</h3>
+            <p class="text-gray-600 mb-2">Get started with a new project in minutes:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Create a new directory
 mkdir myapp
 cd myapp
 
@@ -80,14 +114,16 @@ cd myapp
 spin init .
 
 # Start your development environment
-spin up</pre>
-                </div>
+spin up</code></pre>
+            </div>
+        </div>
 
-                <div class="command-card">
-                    <h3>Using with Existing Projects</h3>
-                    <p>Add Spin to an existing project:</p>
-                    <pre>
-# Navigate to your project
+        <!-- Existing Project -->
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Using with Existing Projects</h3>
+            <p class="text-gray-600 mb-2">Add Spin to an existing project:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Navigate to your project
 cd existing-project
 
 # Initialize Spin (creates spin.config.json)
@@ -95,16 +131,30 @@ spin init . --force
 
 # Configure your services in spin.config.json
 # Start development
-spin up</pre>
-                </div>
+spin up</code></pre>
             </div>
-        </section>
-
-        <div class="prev-next-nav">
-            <a href="{{ '/' | relative_url }}" class="prev-link">← Previous: Home</a>
-            <a href="{{ '/commands' | relative_url }}" class="next-link">Next: Commands →</a>
         </div>
+    </section>
 
-        <div class="last-updated"></div>
-    </main>
+    <!-- Next Steps -->
+    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Next Steps</h2>
+        <ol class="space-y-2 text-gray-600 list-decimal pl-4">
+            <li>Create a new project directory</li>
+            <li>Initialize with <code class="text-primary-600">spin setup</code></li>
+            <li>Configure your development environment</li>
+            <li>Start developing with <code class="text-primary-600">spin up</code></li>
+        </ol>
+        <div class="mt-6 space-y-2">
+            <a href="{{ site.baseurl }}/commands" class="text-primary-600 hover:text-primary-700 block">
+                → Learn about Spin commands
+            </a>
+            <a href="{{ site.baseurl }}/configuration" class="text-primary-600 hover:text-primary-700 block">
+                → Configure Spin for your project
+            </a>
+            <a href="{{ site.baseurl }}/workflow" class="text-primary-600 hover:text-primary-700 block">
+                → Understand the development workflow
+            </a>
+        </div>
+    </div>
 </div>

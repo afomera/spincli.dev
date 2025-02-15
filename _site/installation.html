@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spin - Modern Development Environment Manager - Spin CLI</title>
+    <title>Installing Spin - Spin CLI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,20 +40,20 @@
     </script>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Spin - Modern Development Environment Manager | Spin CLI</title>
+<title>Installing Spin | Spin CLI</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Spin - Modern Development Environment Manager" />
+<meta property="og:title" content="Installing Spin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A modern CLI tool for managing local development environments" />
 <meta property="og:description" content="A modern CLI tool for managing local development environments" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
+<link rel="canonical" href="http://localhost:4000/installation.html" />
+<meta property="og:url" content="http://localhost:4000/installation.html" />
 <meta property="og:site_name" content="Spin CLI" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Spin - Modern Development Environment Manager" />
+<meta property="twitter:title" content="Installing Spin" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"A modern CLI tool for managing local development environments","headline":"Spin - Modern Development Environment Manager","name":"Spin CLI","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"A modern CLI tool for managing local development environments","headline":"Installing Spin","url":"http://localhost:4000/installation.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -85,7 +85,7 @@
                 <div class="space-y-1">
                     
                     <a href="/" 
-                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md bg-white text-primary-600 shadow-sm">
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
                         Getting Started
                     </a>
                     
@@ -152,187 +152,160 @@
         <main class="flex-1 pl-64">
             <div class="max-w-4xl mx-auto px-8 py-12">
                 <div class="prose max-w-none">
-                    <!-- Hero Section -->
-<div class="relative -mx-8 -mt-12 px-8 py-20 mb-16 overflow-hidden">
-    <div class="relative z-10 max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary-400 to-primary-500 text-transparent bg-clip-text">
-            Never miss a service again.
-        </h1>
-        <p class="text-xl text-gray-700 mb-8 max-w-2xl">
-            A powerful development environment manager that helps you run and manage multiple processes and services in your development workflow.
-        </p>
-        <div class="flex space-x-4">
-            <a href="/installation" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-150">
-                Get started
-            </a>
-            <a href="/commands" class="inline-flex items-center px-6 py-3 border border-gray-700 text-base font-medium rounded-md text-gray-600 hover:border-gray-600 hover:text-gray-700 transition-colors duration-150">
-                View commands
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Features Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-    <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-        <div class="text-primary-500 text-2xl mb-4">⚡️</div>
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Zero to Productive</h3>
-        <p class="text-gray-600">
-            Get new developers up and running instantly with just two commands: <code class="text-primary-600">spin fetch</code> and <code class="text-primary-600">spin up</code>.
+                    <div class="space-y-8">
+    <div class="border-b border-gray-200 pb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Installation</h1>
+        <p class="text-xl text-gray-600">
+            Get started with Spin in just a few minutes
         </p>
     </div>
 
-    <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-        <div class="text-primary-600 text-2xl mb-4">🛠</div>
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Simple Yet Powerful</h3>
-        <p class="text-gray-600">
-            Leverages Docker and Tmux behind the scenes, but keeps the developer experience clean and simple.
-        </p>
+    <!-- Prerequisites -->
+    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Prerequisites</h2>
+        <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>tmux (Required for process management)</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Git (for version control)</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Docker (for service management)</span>
+            </li>
+        </ul>
     </div>
 
-    <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-        <div class="text-primary-500 text-2xl mb-4">🤝</div>
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Team Consistency</h3>
-        <p class="text-gray-600">
-            Ensure every developer runs the same configuration. Eliminate "works on my machine" issues.
-        </p>
-    </div>
-
-    <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-        <div class="text-primary-500 text-2xl mb-4">🔄</div>
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Multi-Project Ready</h3>
-        <p class="text-gray-600">
-            Perfect for microservice architectures or full-stack development with separate repositories.
-        </p>
-    </div>
-</div>
-
-<!-- Code Example -->
-<div class="relative mb-16">
-    <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
-        <div class="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-200">
-            <div class="flex space-x-2">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            </div>
-            <span class="text-sm text-gray-500">spin.config.json</span>
-        </div>
-        <div class="p-6">
-            <pre class="text-sm"><code class="text-gray-700">{
-  "name": "test_rails",
-  "version": "1.0.0",
-  "type": "rails",
-  "repository": {
-    "organization": "afomera",
-    "name": "test_rails"
-  },
-  "dependencies": {
-    "services": ["sqlite3"],
-    "tools": ["ruby", "bundler"]
-  },
-  "scripts": {
-    "setup": {
-      "command": "bundle install",
-      "description": "Install dependencies",
-      "hooks": {
-        "pre": {
-          "command": "asdf install ruby",
-          "description": "Install Ruby version",
-          "env": {
-            "RUBY_VERSION": "3.2.2"
-          }
-        },
-        "post": {
-          "command": "bundle exec rails db:setup",
-          "description": "Set up database"
-        }
-      }
-    },
-    "test": {
-      "command": "bundle exec rspec",
-      "description": "Run tests",
-      "hooks": {
-        "pre": {
-          "command": "bundle exec rails db:test:prepare",
-          "description": "Prepare test database"
-        }
-      }
-    }
-  },
-  "env": {
-    "development": {}
-  },
-  "rails": {
-    "ruby": {
-      "version": "3.4.1"
-    },
-    "database": {
-      "type": "sqlite3",
-      "settings": {
-        "database": "storage/development.sqlite3"
-      }
-    },
-    "rails": {
-      "version": "8.0.1"
-    }
-  }
-}</code></pre>
-        </div>
-    </div>
-</div>
-
-<!-- Quick Start -->
-<div class="bg-white rounded-lg p-8 border border-gray-200 shadow-sm mb-16">
-    <h2 class="text-2xl font-bold text-gray-900 mb-6">Quick Start</h2>
-    
-    <div class="space-y-4">
-        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <pre class="text-sm"><code class="text-primary-600"># Install Spin
-brew install spincli</code></pre>
-        </div>
-        
-        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <pre class="text-sm"><code class="text-primary-600"># Initialize a new project
-spin init</code></pre>
-        </div>
-        
-        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <pre class="text-sm"><code class="text-primary-600"># Start your development environment
-spin up</code></pre>
-        </div>
-    </div>
-
-    <div class="mt-6">
-        <a href="/installation" class="text-primary-600 hover:text-primary-700 transition-colors duration-150">
-            View installation guide →
+    <!-- Quick Install -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Install</h2>
+        <p class="text-gray-600 mb-4">Install Spin:</p>
+        <a href="https://github.com/afomera/spin/releases" class="inline-flex items-center px-4 py-2 border border-primary-300 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            Download from GitHub Releases
         </a>
+        
+        <div class="mt-6">
+            <p class="text-gray-600">Verify installation:</p>
+            <div class="bg-gray-50 rounded-lg p-4 mt-2">
+                <pre class="text-sm"><code class="text-primary-600">spin</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform-Specific Setup -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Platform-Specific Setup</h2>
+
+        <!-- macOS -->
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">macOS</h3>
+            <p class="text-gray-600 mb-2">Install prerequisites using Homebrew:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+brew install tmux
+
+# Install Docker Desktop for macOS
+brew install --cask docker</code></pre>
+            </div>
+        </div>
+
+        <!-- Linux -->
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Linux</h3>
+            <p class="text-gray-600 mb-2">Install prerequisites using apt (Ubuntu/Debian):</p>
+            <div class="bg-gray-50 rounded-lg p-4 mb-3">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+sudo apt update && sudo apt install tmux
+
+# Install Docker Engine
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER</code></pre>
+            </div>
+            <p class="text-gray-600 mb-2">Or using yum (RHEL/CentOS):</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Install tmux
+sudo yum install tmux
+
+# Install Docker Engine
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo usermod -aG docker $USER</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Start Guide</h2>
+
+        <!-- New Project -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Creating a New Project</h3>
+            <p class="text-gray-600 mb-2">Get started with a new project in minutes:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Create a new directory
+mkdir myapp
+cd myapp
+
+# Initialize Spin
+spin init .
+
+# Start your development environment
+spin up</code></pre>
+            </div>
+        </div>
+
+        <!-- Existing Project -->
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Using with Existing Projects</h3>
+            <p class="text-gray-600 mb-2">Add Spin to an existing project:</p>
+            <div class="bg-gray-50 rounded-lg p-4">
+                <pre class="text-sm"><code class="text-primary-600"># Navigate to your project
+cd existing-project
+
+# Initialize Spin (creates spin.config.json)
+spin init . --force
+
+# Configure your services in spin.config.json
+# Start development
+spin up</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Next Steps</h2>
+        <ol class="space-y-2 text-gray-600 list-decimal pl-4">
+            <li>Create a new project directory</li>
+            <li>Initialize with <code class="text-primary-600">spin setup</code></li>
+            <li>Configure your development environment</li>
+            <li>Start developing with <code class="text-primary-600">spin up</code></li>
+        </ol>
+        <div class="mt-6 space-y-2">
+            <a href="/commands" class="text-primary-600 hover:text-primary-700 block">
+                → Learn about Spin commands
+            </a>
+            <a href="/configuration" class="text-primary-600 hover:text-primary-700 block">
+                → Configure Spin for your project
+            </a>
+            <a href="/workflow" class="text-primary-600 hover:text-primary-700 block">
+                → Understand the development workflow
+            </a>
+        </div>
     </div>
-</div>
-
-<!-- Documentation Links -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <a href="/commands" class="group">
-        <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:border-gray-300 transition-colors duration-150">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-150">
-                Command Reference →
-            </h3>
-            <p class="text-gray-600">
-                Comprehensive guide to all Spin commands and their options.
-            </p>
-        </div>
-    </a>
-
-    <a href="/configuration" class="group">
-        <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:border-gray-300 transition-colors duration-150">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-150">
-                Configuration Guide →
-            </h3>
-            <p class="text-gray-600">
-                Learn how to configure Spin for your projects.
-            </p>
-        </div>
-    </a>
 </div>
 
                 </div>

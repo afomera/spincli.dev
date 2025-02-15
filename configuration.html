@@ -1,24 +1,26 @@
 ---
 layout: default
-title: Configuration
+title: Configuring Spin
 ---
 
-<div class="docs-container">
-    {% include sidebar.html %}
+<div class="space-y-8">
+    <div class="border-b border-gray-200 pb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Configuration</h1>
+        <p class="text-xl text-gray-600">
+            Learn how to configure Spin for your projects
+        </p>
+    </div>
 
-    <main class="content">
-        <section id="configuration">
-            <div class="container config-section">
-                <h2>Configuration</h2>
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search configuration..." />
-                </div>
+    <!-- Configuration File -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Configuration File</h2>
+        
+        <p class="text-gray-600 mb-6">
+            Configuration is read from the <code class="text-primary-600">spin.config.json</code> file in your project directory. Here's an example of a Rails application configuration:
+        </p>
 
-                <div id="config-file">
-                    <h3>Configuration File</h3>
-                    <p>Configuration is read from the <code>spin.config.json</code> file in your project directory.</p>
-                    <p>The main configuration file for your application. Here's an example of a Rails application configuration:</p>
-                    <pre>{
+        <div class="bg-gray-50 rounded-lg p-4">
+            <pre class="text-sm"><code class="text-primary-600">{
   "name": "test_rails",
   "version": "1.0.0",
   "type": "rails",
@@ -57,16 +59,6 @@ title: Configuration
           "description": "Prepare test database"
         }
       }
-    },
-    "server": {
-      "command": "bundle exec rails server",
-      "description": "Start Rails server",
-      "hooks": {
-        "pre": {
-          "command": "bundle exec rails db:prepare",
-          "description": "Prepare database"
-        }
-      }
     }
   },
   "env": {
@@ -84,51 +76,28 @@ title: Configuration
     },
     "rails": {
       "version": "8.0.1"
-    },
-    "services": {
-      "postgres": {
-        "type": "docker",
-        "image": "postgres:17",
-        "port": 5432,
-        "environment": {
-          "POSTGRES_USER": "postgres",
-          "POSTGRES_PASSWORD": "postgres"
-        },
-        "volumes": {
-          "data": "/var/lib/postgresql/data"
-        },
-        "healthCheck": {
-          "command": ["pg_isready", "-U", "postgres"],
-          "interval": "10s",
-          "timeout": "5s",
-          "retries": 3,
-          "startPeriod": "10s"
-        }
-      },
-      "redis": {
-        "type": "docker",
-        "image": "redis:7",
-        "port": 6379,
-        "volumes": {
-          "data": "/data"
-        }
-      }
     }
   }
-}</pre>
-                </div>
+}</code></pre>
+        </div>
+    </section>
 
-                <div id="scripts">
-                    <h3>Scripts Configuration</h3>
-                    <p>Scripts are defined in your configuration file under the <code>scripts</code> section. Each script can have:</p>
-                    <ul>
-                        <li>A main command to execute</li>
-                        <li>A description for documentation</li>
-                        <li>Pre and post hooks with their own commands and environment variables</li>
-                    </ul>
-                    <div class="command-card">
-                        <h4>Script Structure</h4>
-                        <pre>{
+    <!-- Scripts Configuration -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Scripts Configuration</h2>
+        
+        <p class="text-gray-600 mb-6">
+            Scripts are defined in your configuration file under the <code class="text-primary-600">scripts</code> section. Each script can have:
+        </p>
+
+        <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+            <li>A main command to execute</li>
+            <li>A description for documentation</li>
+            <li>Pre and post hooks with their own commands and environment variables</li>
+        </ul>
+
+        <div class="bg-gray-50 rounded-lg p-4">
+            <pre class="text-sm"><code class="text-primary-600">{
   "scripts": {
     "scriptName": {
       "command": "main command to run",
@@ -148,71 +117,114 @@ title: Configuration
       }
     }
   }
-}</pre>
-                    </div>
-                </div>
+}</code></pre>
+        </div>
+    </section>
 
-                <div id="services">
-                    <h3>Service Configuration</h3>
-                    <p>Services are defined in your configuration file under the framework-specific section (e.g., <code>rails.services</code>). Each service can have:</p>
-                    <ul>
-                        <li>Docker image and version</li>
-                        <li>Port mappings</li>
-                        <li>Environment variables</li>
-                        <li>Volume mounts</li>
-                        <li>Health checks</li>
-                    </ul>
-                    <div class="command-card">
-                        <h4>Service Structure</h4>
-                        <pre>{
+    <!-- Service Configuration -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Service Configuration</h2>
+        
+        <p class="text-gray-600 mb-6">
+            Services are defined in your configuration file under the framework-specific section (e.g., <code class="text-primary-600">rails.services</code>). Each service can have:
+        </p>
+
+        <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+            <li>Docker image and version</li>
+            <li>Port mappings</li>
+            <li>Environment variables</li>
+            <li>Volume mounts</li>
+            <li>Health checks</li>
+        </ul>
+
+        <div class="bg-gray-50 rounded-lg p-4">
+            <pre class="text-sm"><code class="text-primary-600">{
   "services": {
-    "serviceName": {
+    "postgres": {
       "type": "docker",
-      "image": "image:tag",
-      "port": 1234,
+      "image": "postgres:17",
+      "port": 5432,
       "environment": {
-        "ENV_KEY": "value"
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres"
       },
       "volumes": {
-        "name": "container/path"
+        "data": "/var/lib/postgresql/data"
       },
       "healthCheck": {
-        "command": ["check", "command"],
+        "command": ["pg_isready", "-U", "postgres"],
         "interval": "10s",
         "timeout": "5s",
-        "retries": 3
+        "retries": 3,
+        "startPeriod": "10s"
+      }
+    },
+    "redis": {
+      "type": "docker",
+      "image": "redis:7",
+      "port": 6379,
+      "volumes": {
+        "data": "/data"
       }
     }
   }
-}</pre>
-                    </div>
-                </div>
+}</code></pre>
+        </div>
+    </section>
 
-                <div id="procfile">
-                    <h3>Procfile.dev</h3>
-                    <p>Define additional processes to run alongside your main application:</p>
-                    <pre>web: bundle exec rails server -p 3000
+    <!-- Procfile Configuration -->
+    <section class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Procfile.dev</h2>
+        
+        <p class="text-gray-600 mb-6">
+            Define additional processes to run alongside your main application:
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-4">
+            <pre class="text-sm"><code class="text-primary-600">web: bundle exec rails server -p 3000
 worker: bundle exec sidekiq
 css: yarn build:css --watch
-js: yarn build --watch</pre>
-                    
-                    <div class="command-card">
-                        <h4>Process Types</h4>
-                        <ul>
-                            <li>Each line defines a process type and its command</li>
-                            <li>Process types can be referenced in logs and debugging</li>
-                            <li>All processes are managed together by Spin</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="prev-next-nav">
-            <a href="{{ '/commands' | relative_url }}" class="prev-link">← Previous: Commands</a>
-            <a href="{{ '/workflow' | relative_url }}" class="next-link">Next: Development Workflow →</a>
+js: yarn build --watch</code></pre>
         </div>
 
-        <div class="last-updated"></div>
-    </main>
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Process Types</h3>
+            <ul class="list-disc pl-6 text-gray-600 space-y-2">
+                <li>Each line defines a process type and its command</li>
+                <li>Process types can be referenced in logs and debugging</li>
+                <li>All processes are managed together by Spin</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Best Practices -->
+    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Best Practices</h2>
+        <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Keep sensitive information in <code class="text-primary-600">.env</code> files</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Use version control for <code class="text-primary-600">spin.config.json</code></span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Document service dependencies and requirements</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="h-6 w-6 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Use health checks for critical services</span>
+            </li>
+        </ul>
+    </div>
 </div>

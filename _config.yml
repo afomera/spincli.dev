@@ -1,14 +1,31 @@
-title: SpinCLI
-description: Documentation for SpinCLI - A powerful CLI tool
-url: ""
+title: Spin
+description: A modern CLI tool for managing local development environments
 baseurl: ""
+url: "https://spincli.dev"
 
 # Build settings
 markdown: kramdown
-permalink: pretty
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
 
+# Navigation
+navigation:
+  - title: Getting Started
+    url: /
+  - title: Installation
+    url: /installation
+  - title: Commands
+    url: /commands
+  - title: Configuration
+    url: /configuration
+  - title: Workflow
+    url: /workflow
+
+# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
+  - .git

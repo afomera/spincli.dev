@@ -1,9 +1,158 @@
----
-layout: default
-title: Development Workflow with Spin
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Workflow with Spin - Spin CLI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        },
+                        dark: {
+                            900: '#0B1120',
+                            800: '#1E293B',
+                            700: '#334155',
+                            600: '#475569',
+                        },
+                        accent: {
+                            blue: '#60A5FA',
+                            purple: '#A78BFA',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Development Workflow with Spin | Spin CLI</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Development Workflow with Spin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A modern CLI tool for managing local development environments" />
+<meta property="og:description" content="A modern CLI tool for managing local development environments" />
+<link rel="canonical" href="http://localhost:4000/workflow.html" />
+<meta property="og:url" content="http://localhost:4000/workflow.html" />
+<meta property="og:site_name" content="Spin CLI" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Development Workflow with Spin" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A modern CLI tool for managing local development environments","headline":"Development Workflow with Spin","url":"http://localhost:4000/workflow.html"}</script>
+<!-- End Jekyll SEO tag -->
 
-<div class="space-y-8">
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm border-b border-gray-200">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-3">
+                        <span class="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-500 text-transparent bg-clip-text">Spin</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/afomera/spin" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.647.35-1.087.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="min-h-screen pt-16 flex">
+        <!-- Sidebar -->
+        <aside class="fixed inset-y-0 left-0 w-64 pt-16 bg-gray-50 border-r border-gray-200 overflow-y-auto">
+            <nav class="px-4 py-6">
+                <div class="space-y-1">
+                    
+                    <a href="/" 
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
+                        Getting Started
+                    </a>
+                    
+                    <a href="/installation" 
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
+                        Installation
+                    </a>
+                    
+                    <a href="/commands" 
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
+                        Commands
+                    </a>
+                    
+                    <a href="/configuration" 
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
+                        Configuration
+                    </a>
+                    
+                    <a href="/workflow" 
+                       class="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-white hover:text-gray-900">
+                        Workflow
+                    </a>
+                    
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Commands
+                    </h3>
+                    <div class="mt-2 space-y-1">
+                        <a href="/commands#up" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin up
+                        </a>
+                        <a href="/commands#down" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin down
+                        </a>
+                        <a href="/commands#ps" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin ps
+                        </a>
+                        <a href="/commands#logs" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin logs
+                        </a>
+                        <a href="/commands#debug" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin debug
+                        </a>
+                        <a href="/commands#init" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin init
+                        </a>
+                        <a href="/commands#scripts" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin scripts
+                        </a>
+                        <a href="/commands#config" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin config
+                        </a>
+                        <a href="/commands#services" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-white hover:text-gray-900">
+                            spin services
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 pl-64">
+            <div class="max-w-4xl mx-auto px-8 py-12">
+                <div class="prose max-w-none">
+                    <div class="space-y-8">
     <div class="border-b border-gray-200 pb-8">
         <h1 class="text-4xl font-bold text-gray-900 mb-4">Development Workflow</h1>
         <p class="text-xl text-gray-600">
@@ -218,3 +367,25 @@ spin down && spin up</code></pre>
         </ul>
     </div>
 </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple script to highlight current section in sidebar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const sidebarLinks = document.querySelectorAll('aside a');
+            
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+                    link.classList.remove('text-gray-600');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
