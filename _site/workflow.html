@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development Workflow with Spin - Spin CLI</title>
+    <title>Development Workflow with Spin - Spin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,7 +40,7 @@
     </script>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Development Workflow with Spin | Spin CLI</title>
+<title>Development Workflow with Spin | Spin</title>
 <meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Development Workflow with Spin" />
 <meta property="og:locale" content="en_US" />
@@ -48,7 +48,7 @@
 <meta property="og:description" content="A modern CLI tool for managing local development environments" />
 <link rel="canonical" href="http://localhost:4000/workflow.html" />
 <meta property="og:url" content="http://localhost:4000/workflow.html" />
-<meta property="og:site_name" content="Spin CLI" />
+<meta property="og:site_name" content="Spin" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Development Workflow with Spin" />
@@ -150,7 +150,7 @@
 
         <!-- Main content -->
         <main class="flex-1 pl-64">
-            <div class="max-w-4xl mx-auto px-8 py-12">
+            <div class="max-w-5xl mx-auto px-8 py-12">
                 <div class="prose max-w-none">
                     <div class="space-y-8">
     <div class="border-b border-gray-200 pb-8">
@@ -239,16 +239,18 @@ spin down</code></pre>
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-900">Onboarding New Team Members</h3>
                 <div class="bg-gray-50 rounded-lg p-4">
-                    <pre class="text-sm"><code class="text-primary-600"># Clone repository
-git clone project-repo
-
-# Copy environment file
-cp .env.example .env
+                    <pre class="text-sm"><code class="text-primary-600"># Fetch repository
+spin fetch [repository-name]
 
 # Start development environment
 spin up</code></pre>
                 </div>
             </div>
+
+            <p class="text-gray-600">
+                New team members can quickly get started by fetching the repository and running <code class="text-primary-600">spin up</code>.
+                This will set up the environment with all necessary services, and run the setup script if available.
+            </p>
         </div>
     </section>
 
